@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>C Studio</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: Arial, sans-serif;
+    background: #ffffff;
+    color: #0a2a5e;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 40px;
+    background: #ffffff;
+    border-bottom: 2px solid #c8dff5;
+  }
+
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+  }
+
+  .nav-logo img {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+  }
+
+  .nav-logo span {
+    font-size: 1.5rem;
+    font-weight: 900;
+    letter-spacing: 3px;
+    color: #0a2a5e;
+    text-transform: uppercase;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 28px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    text-decoration: none;
+    color: #0a2a5e;
+    font-size: 0.9rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  .nav-links a:hover { color: #1a56a8; }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    background: linear-gradient(135deg, #0a2a5e 0%, #1a56a8 60%, #4a90d9 100%);
+    padding: 120px 30px 80px;
+  }
+
+  .hero img.hero-logo {
+    width: 220px;
+    height: 220px;
+    object-fit: contain;
+    margin-bottom: 24px;
+  }
+
+  .hero h1 {
+    font-size: 5rem;
+    font-weight: 900;
+    color: #ffffff;
+    letter-spacing: 8px;
+    text-transform: uppercase;
+  }
+
+  .hero h1 span { color: #c8dff5; }
+
+  .hero p {
+    font-size: 1rem;
+    color: rgba(255,255,255,0.75);
+    margin-top: 12px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+  }
+
+  .hero-btns {
+    margin-top: 40px;
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .btn {
+    padding: 14px 30px;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    font-weight: 700;
+    text-decoration: none;
+    display: inline-block;
+    transition: opacity 0.2s, transform 0.2s;
+  }
+  .btn:hover { opacity: 0.88; transform: translateY(-2px); }
+
+  .btn-white { background: #ffffff; color: #0a2a5e; }
+  .btn-outline { background: transparent; color: #ffffff; border: 2px solid rgba(255,255,255,0.6); }
+
+  /* SECTIONS */
+  section { padding: 80px 40px; }
+
+  .section-tag {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: #1a56a8;
+    margin-bottom: 10px;
+  }
+
+  .section-title {
+    font-size: 2.6rem;
+    font-weight: 900;
+    color: #0a2a5e;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+
+  .section-sub {
+    font-size: 1rem;
+    color: #0a2a5e;
+    max-width: 500px;
+    margin: 0 auto 40px;
+    line-height: 1.7;
+  }
+
+  /* GAME */
+  .game-section {
+    background: #f4f8fd;
+    text-align: center;
+  }
+
+  .game-card {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    background: #ffffff;
+    border: 2px solid #c8dff5;
+    border-radius: 20px;
+    padding: 40px 50px;
+    text-decoration: none;
+    transition: transform 0.25s, box-shadow 0.25s;
+  }
+  .game-card:hover { transform: translateY(-6px); box-shadow: 0 16px 50px rgba(10,42,94,0.14); }
+
+  .game-card img {
+    width: 140px;
+    height: 140px;
+    object-fit: contain;
+    border-radius: 16px;
+  }
+
+  .game-card .game-name {
+    font-size: 2rem;
+    font-weight: 900;
+    color: #0a2a5e;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+  }
+
+  .play-btn {
+    background: #1a56a8;
+    color: #fff;
+    padding: 12px 28px;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 0.95rem;
+  }
+
+  /* TEAM */
+  .team-section {
+    background: #ffffff;
+    text-align: center;
+  }
+
+  .founder-wrap {
+    max-width: 820px;
+    margin: 0 auto 28px;
+  }
+
+  .founder-card {
+    background: linear-gradient(135deg, #0a2a5e, #1a56a8);
+    border-radius: 18px;
+    padding: 44px 48px;
+    display: flex;
+    align-items: center;
+    gap: 36px;
+    text-align: left;
+    box-shadow: 0 8px 40px rgba(10,42,94,0.2);
+  }
+
+  .founder-card img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid rgba(255,255,255,0.4);
+    flex-shrink: 0;
+  }
+
+  .founder-card .name { font-size: 2rem; font-weight: 900; color: #fff; letter-spacing: 2px; text-transform: uppercase; }
+  .founder-card .role { font-size: 0.75rem; font-weight: 700; color: #c8dff5; letter-spacing: 3px; text-transform: uppercase; margin-top: 4px; }
+  .founder-card .badge {
+    display: inline-block;
+    background: rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.3);
+    color: #fff;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 4px 14px;
+    border-radius: 20px;
+    margin-top: 8px;
+  }
+  .founder-card .desc { font-size: 0.9rem; color: rgba(255,255,255,0.68); margin-top: 10px; line-height: 1.65; }
+
+  /* FIX: 2x2 grid for 4 designers */
+  .designers {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 22px;
+    max-width: 820px;
+    margin: 0 auto;
+  }
+
+  .member-card {
+    background: #f4f8fd;
+    border: 1.5px solid #c8dff5;
+    border-radius: 16px;
+    padding: 36px 24px;
+    transition: transform 0.25s, box-shadow 0.25s;
+  }
+  .member-card:hover { transform: translateY(-4px); box-shadow: 0 12px 36px rgba(10,42,94,0.1); }
+
+  .member-card img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #c8dff5;
+    margin-bottom: 16px;
+  }
+
+  .member-card .name { font-size: 1.4rem; font-weight: 900; color: #0a2a5e; letter-spacing: 2px; text-transform: uppercase; }
+  .member-card .role { font-size: 0.72rem; font-weight: 700; color: #1a56a8; letter-spacing: 3px; text-transform: uppercase; margin-top: 4px; }
+  .member-card .desc { font-size: 0.88rem; color: #0a2a5e; margin-top: 10px; line-height: 1.6; }
+
+  /* THANKS */
+  .thanks-section {
+    background: #0a2a5e;
+    text-align: center;
+  }
+
+  .thanks-section .section-tag { color: #c8dff5; }
+  .thanks-section .section-title { color: #ffffff; }
+  .thanks-section .section-sub { color: rgba(255,255,255,0.58); }
+
+  .thanks-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    max-width: 680px;
+    margin: 0 auto;
+  }
+
+  .thanks-card {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    background: rgba(255,255,255,0.07);
+    border: 1.5px solid rgba(255,255,255,0.14);
+    border-radius: 16px;
+    padding: 28px 40px;
+    width: 100%;
+    text-align: left;
+    transition: background 0.2s, transform 0.2s;
+  }
+  .thanks-card:hover { background: rgba(255,255,255,0.11); transform: translateY(-3px); }
+
+  .thanks-card img {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid rgba(255,255,255,0.3);
+    flex-shrink: 0;
+  }
+
+  .thanks-card .name { font-size: 1.4rem; font-weight: 900; color: #ffffff; letter-spacing: 2px; text-transform: uppercase; }
+  .thanks-card .role { font-size: 0.72rem; font-weight: 700; color: #c8dff5; letter-spacing: 3px; text-transform: uppercase; margin-top: 3px; }
+  .thanks-card .note { font-size: 0.88rem; color: rgba(255,255,255,0.75); margin-top: 8px; line-height: 1.55; }
+
+  /* CONNECT */
+  .connect-section {
+    background: #f4f8fd;
+    text-align: center;
+  }
+
+  .pills {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 13px 28px;
+    border-radius: 100px;
+    font-size: 0.92rem;
+    font-weight: 700;
+    text-decoration: none;
+    transition: opacity 0.2s, transform 0.2s;
+  }
+  .pill:hover { opacity: 0.85; transform: translateY(-2px); }
+
+  .pill-dark  { background: #0a2a5e; color: #fff; }
+  .pill-disc  { background: #5865F2; color: #fff; }
+  .pill-blue  { background: #1a56a8; color: #fff; }
+  .pill-red   { background: #ea4335; color: #fff; }
+
+  /* CONTACT */
+  .contact-section {
+    background: #ffffff;
+    text-align: center;
+  }
+
+  .contact-box {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    background: #f4f8fd;
+    border: 2px solid #c8dff5;
+    border-radius: 18px;
+    padding: 44px 60px;
+  }
+
+  .contact-box .email-text {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #1a56a8;
+    letter-spacing: 1px;
+  }
+
+  .contact-box p {
+    color: #0a2a5e;
+    font-size: 0.92rem;
+    line-height: 1.6;
+    max-width: 340px;
+  }
+
+  /* FOOTER */
+  footer {
+    background: #0a2a5e;
+    color: rgba(255,255,255,0.45);
+    text-align: center;
+    padding: 24px 40px;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+  }
+  footer span { color: rgba(255,255,255,0.75); }
+
+  @media (max-width: 700px) {
+    nav { padding: 12px 20px; }
+    .nav-links { gap: 14px; }
+    .hero h1 { font-size: 2.8rem; }
+    section { padding: 60px 20px; }
+    .founder-card { flex-direction: column; text-align: center; padding: 32px 24px; }
+    .designers { grid-template-columns: 1fr; }
+    .thanks-card { flex-direction: column; text-align: center; padding: 28px 20px; }
+    .contact-box { padding: 32px 24px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">
+    <img src="pictures/betterlogo.png" alt="C Studio">
+    <span>Studio</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#game">Game</a></li>
+    <li><a href="#team">Team</a></li>
+    <li><a href="#thanks">Thanks</a></li>
+    <li><a href="#connect">Connect</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <img class="hero-logo" src="pictures/betterlogo.png" alt="C Studio Logo">
+  <h1><span>Studio</span></h1>
+  <p>Independent Game &amp; Dev Studio</p>
+  <div class="hero-btns">
+    <a href="https://prettytasty.github.io/Rateater/" target="_blank" class="btn btn-white">🐀 Play Rat Eater</a>
+    <a href="#team" class="btn btn-outline">Meet the Team</a>
+  </div>
+</section>
+
+<!-- GAME -->
+<section class="game-section" id="game">
+  <p class="section-tag">Our Latest Release</p>
+  <h2 class="section-title">Rat Eater</h2>
+  <p class="section-sub">Our debut game — fast, fun, and made with passion by the whole C Studio crew.</p>
+  <a href="https://prettytasty.github.io/Rateater/" target="_blank" class="game-card">
+    <img src="pictures/ratlogo.png" alt="Rat Eater">
+    <div class="game-name">Rat Eater</div>
+    <div class="btn play-btn">▶ Play Now</div>
+  </a>
+</section>
+
+<!-- TEAM -->
+<section class="team-section" id="team">
+  <p class="section-tag">The People</p>
+  <h2 class="section-title">Meet the Team</h2>
+  <p class="section-sub">The talented crew behind C Studio.</p>
+
+  <div class="founder-wrap">
+    <div class="founder-card">
+      <img src="pictures/tony.jpg" alt="Tony">
+      <div>
+        <div class="name">Tony</div>
+        <div class="role">Founder &amp; Leader of the Team</div>
+        <!-- FIX: "Coder" typo fixed, space added after period -->
+        <div class="badge">⚡ Coderr</div>
+        <p class="desc">The brain of C Studio. Tony builds the code, drives the vision, and turns ideas into playable reality.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- FIX: Changed to 2x2 grid (4 members, 2 columns) -->
+  <div class="designers">
+    <div class="member-card">
+      <img src="pictures/zachary.jpg" alt="Zach">
+      <div class="name">Zach</div>
+      <div class="role">Designer</div>
+      <p class="desc">Zach is the creative force behind our visual design and adding cool stuff.</p>
+    </div>
+    <div class="member-card">
+      <img src="pictures/mitchel.jpg" alt="Mitchel">
+      <div class="name">Mitchel</div>
+      <div class="role">Designer</div>
+      <p class="desc">Mitchel brings a unique perspective to our design work with his bread.</p>
+    </div>
+    <div class="member-card">
+      <img src="pictures/mason.jpg" alt="Mason">
+      <div class="name">Mason</div>
+      <div class="role">Designer</div>
+      <p class="desc">Mason is one of the best designers on the team — without him the game would look trash.</p>
+    </div>
+    <div class="member-card">
+      <img src="pictures/scarlett.jpg" alt="Scarlett">
+      <div class="name">Scarlett</div>
+      <div class="role">Designer / Frontend</div>
+      <p class="desc">Scarlett helped with debugging the game and crafting the visuals, CSS, and HTML of the code.</p>
+    </div>
+  </div>
+</section>
+
+<!-- THANKS -->
+<section class="thanks-section" id="thanks">
+  <p class="section-tag">Special Thanks</p>
+  <h2 class="section-title">Our Supporters</h2>
+  <p class="section-sub">C Studio wouldn't be here without these incredible people.</p>
+
+  <div class="thanks-list">
+    <div class="thanks-card">
+      <img src="pictures/jason.jpg" alt="Jason">
+      <div>
+        <div class="name">Jason</div>
+        <div class="role">Donator &amp; Investor</div>
+        <p class="note">Massive thanks to Jason for believing in C Studio from day one. Your investment fuels everything we build. 🙏</p>
+      </div>
+    </div>
+    <div class="thanks-card">
+      <img src="pictures/eesa.jpg" alt="Eesa">
+      <div>
+        <div class="name">Eesa</div>
+        <div class="role">Special Thanks</div>
+        <p class="note">Big thanks to Eesa for the support and good vibes. Your encouragement means a lot. ❤️</p>
+      </div>
+    </div>
+    <div class="thanks-card">
+      <img src="pictures/scarlett.jpg" alt="Scarlett">
+      <div>
+        <div class="name">Scarlett</div>
+        <div class="role">Special Thanks</div>
+        <p class="note">Shoutout to Scarlett for always helping debug the game.</p>
+      </div>
+    </div>
+    <div class="thanks-card">
+      <img src="pictures/nr3.jpg" alt="Nr3">
+      <div>
+        <div class="name">Nr3</div>
+        <div class="role">Special Thanks</div>
+        <p class="note">Huge thank you to Nr3 for the love and support.</p>
+      </div>
+    </div>
+    <div class="thanks-card">
+      <img src="pictures/aiden.jpg" alt="Aiden">
+      <div>
+        <div class="name">Aiden</div>
+        <div class="role">Special Thanks</div>
+        <p class="note">Thanks to Aiden for being a tree. 🌳</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONNECT -->
+<section class="connect-section" id="connect">
+  <p class="section-tag">Find Us Online</p>
+  <h2 class="section-title">Connect With Us</h2>
+  <div class="pills">
+    <a href="https://github.com/prettytasty" target="_blank" class="pill pill-dark">⚙ GitHub — prettytasty</a>
+    <a href="https://discord.com/users/iloveoffice" target="_blank" class="pill pill-disc">💬 Discord — iloveoffice</a>
+    <a href="https://prettytasty.github.io/Rateater/" target="_blank" class="pill pill-blue">🐀 Play Rat Eater</a>
+    <a href="/cdn-cgi/l/email-protection#40342f2e392e273539252e70707270717300272d21292c6e232f2d" class="pill pill-red">✉ Email Tony</a>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact-section" id="contact">
+  <p class="section-tag">Get In Touch</p>
+  <h2 class="section-title">Contact Tony</h2>
+  <div class="contact-box">
+    <div style="font-size:2.5rem;">🕊️</div>
+    <p>Have a question, collab idea, or just want to say hi? Shoot me an email!</p>
+    <div class="email-text"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="067269687f6861737f636836363436373546616b676f6a2865696b">[email&#160;protected]</a></div>
+    <a href="/cdn-cgi/l/email-protection#31455e5f485f564448545f01010301000271565c50585d1f525e5c" cla
