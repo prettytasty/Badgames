@@ -564,4 +564,58 @@
   <div class="contact-box">
     <div style="font-size:2.5rem;">🕊️</div>
     <p>Have a question, collab idea, or just want to say hi? Shoot me an email!</p>
-   
+		
+<!-- DONATE SECTION -->
+<section style="padding:80px 20px; background:#D3D3D3; text-align:center; font-family: sans-serif;" id="donate">
+  <p style="color:#1a56a8; font-weight:700; letter-spacing:2px; text-transform:uppercase; margin-bottom:8px;">Support Us</p>
+  <h2 style="font-size:2.5rem; color:#0a2a5e; margin:0 0 12px 0;">Help Us Grow</h2>
+  <p style="color:#1a56a8; margin-bottom:40px;">We're saving up to keep building games. Every dollar helps us get there!</p>
+
+  <div style="max-width:600px; margin:0 auto; background:#f4f8fd; border:2px solid #c8dff5; border-radius:24px; padding:40px;">
+    
+    <!-- 1. Progress Stats -->
+    <div style="display:flex; justify-content:space-between; align-items:flex-end; margin-bottom:12px;">
+      <div>
+        <span style="display:block; font-size:0.8rem; color:#1a56a8; text-transform:uppercase; font-weight:700; text-align:left;">Raised</span>
+        <span style="font-size:2.5rem; font-weight:900; color:#0a2a5e;">$9</span>
+      </div>
+      <div style="text-align:right;">
+        <span style="display:block; font-size:0.8rem; color:#1a56a8; text-transform:uppercase; font-weight:700;">Goal</span>
+        <span style="font-size:1.2rem; font-weight:700; color:#1a56a8;">$100</span>
+      </div>
+    </div>
+
+    <!-- 2. Visual Progress Bar -->
+    <div style="width:100%; height:16px; background:#c8dff5; border-radius:100px; overflow:hidden; margin-bottom:16px;">
+      <div id="donatebar" style="height:100%; width:0%; background:linear-gradient(90deg, #1a56a8, #4a90d9); border-radius:100px; transition: width 1.5s ease-out;"></div>
+    </div>
+    
+    <p style="font-size:0.85rem; font-weight:700; color:#1a56a8; text-transform:uppercase; letter-spacing:1px; margin-bottom:30px;">
+      9 dollar funded — $91 to go!
+    </p>
+
+    <!-- 3. Urgency/Call to Action -->
+    <div style="background:#fff4cd; border:1px solid #f5c842; border-radius:12px; padding:12px; font-size:0.9rem; font-weight:600; color:#7a5c00; margin-bottom:24px;">
+      🙏 Every dollar counts towards our next release! 🙏
+    </div>
+
+    <a href="mailto:youremail@example.com" style="display:inline-block; background:#1a56a8; color:#ffffff; text-decoration:none; padding:16px 40px; border-radius:12px; font-weight:700; font-size:1.1rem; transition: transform 0.2s;">
+      Donate Now (Paypal me)
+    </a>
+
+    <!-- 4. Footer Note -->
+    <p style="font-size:0.75rem; color:#6b8cb3; letter-spacing:1px; text-transform:uppercase; margin-top:24px; font-weight:600;">
+      Be one of our best supporters
+    </p>
+
+  </div>
+</section>
+
+<script>
+  window.addEventListener('load', () => {
+    // Small delay to ensure the animation is visible
+    setTimeout(() => {
+      document.getElementById('donatebar').style.width = '7%';
+    }, 300);
+  });
+</script>
