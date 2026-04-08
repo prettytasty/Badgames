@@ -245,7 +245,6 @@
   }
   .founder-card .desc { font-size: 0.9rem; color: rgba(255,255,255,0.68); margin-top: 10px; line-height: 1.65; }
 
-  /* FIX: 2x2 grid for 4 designers */
   .designers {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -386,7 +385,7 @@
 
   /* FOOTER */
   footer {
-    background: #0a2a5e;
+    background: #ffffff;
     color: rgba(255,255,255,0.45);
     text-align: center;
     padding: 24px 40px;
@@ -394,6 +393,88 @@
     letter-spacing: 1px;
   }
   footer span { color: rgba(255,255,255,0.75); }
+
+  /* ===================== GAME LIBRARY ===================== */
+  .library-section {
+    background: #ffffff;
+    text-align: center;
+    padding: 80px 40px;
+  }
+
+  .library-section .section-tag { color: #ffffff; }
+  .library-section .section-title { color: #0a2a5e; margin-bottom: 40px; }
+
+  .library-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .lib-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background: #7a7d80;
+    border: 2px solid #c8dff5;
+    border-radius: 18px;
+    padding: 32px 20px;
+    text-decoration: none;
+    color: #0a2a5e;
+    font-weight: 900;
+    font-size: 1.15rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    transition: transform 0.22s, box-shadow 0.22s, background 0.22s, color 0.22s, border-color 0.22s;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+  }
+
+  .lib-btn::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, #0a2a5e 0%, #1a56a8 100%);
+    opacity: 0;
+    transition: opacity 0.22s;
+    border-radius: 16px;
+  }
+
+  .lib-btn:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 14px 40px rgba(10,42,94,0.18);
+    border-color: #1a56a8;
+    color: #ffffff;
+  }
+
+  .lib-btn:hover::before { opacity: 1; }
+
+  .lib-btn .lib-icon,
+  .lib-btn .lib-name {
+    position: relative;
+    z-index: 1;
+  }
+
+  .lib-icon {
+    font-size: 2rem;
+    line-height: 1;
+  }
+
+  .lib-name {
+    font-size: 1rem;
+    font-weight: 900;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: inherit;
+  }
+
+  .lib-btn:hover .lib-name { color: #ffffff; }
+
+  /* ======================================================= */
 
   @media (max-width: 700px) {
     nav { padding: 12px 20px; }
@@ -404,6 +485,11 @@
     .designers { grid-template-columns: 1fr; }
     .thanks-card { flex-direction: column; text-align: center; padding: 28px 20px; }
     .contact-box { padding: 32px 24px; }
+    .library-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  @media (max-width: 480px) {
+    .library-grid { grid-template-columns: 1fr; }
   }
 </style>
 </head>
@@ -421,6 +507,7 @@
     <li><a href="#thanks">Thanks</a></li>
     <li><a href="#connect">Connect</a></li>
     <li><a href="#contact">Contact</a></li>
+    <li><a href="#library">Games</a></li>
   </ul>
 </nav>
 
@@ -459,14 +546,12 @@
       <div>
         <div class="name">Tony</div>
         <div class="role">Founder &amp; Leader of the Team</div>
-        <!-- FIX: "Coder" typo fixed, space added after period -->
         <div class="badge">⚡ Developer</div>
         <p class="desc">Tony is a highly skilled and proficient developer who writes clean, efficient, and maintainable code, ensuring the game is high quality. He has extensive experience in Python, Javascript, CSS, and HTML. </p>
       </div>
     </div>
   </div>
 
-  <!-- FIX: Changed to 2x2 grid (4 members, 2 columns) -->
   <div class="designers">
     <div class="member-card">
       <img src="pictures/zachary.jpg" alt="Zach">
@@ -564,7 +649,9 @@
   <div class="contact-box">
     <div style="font-size:2.5rem;">🕊️</div>
     <p>Have a question, collab idea, or just want to say hi? Shoot me an email!</p>
-		
+  </div>
+</section>
+
 <!-- DONATE SECTION -->
 <section style="padding:80px 20px; background:#D3D3D3; text-align:center; font-family: sans-serif;" id="donate">
   <p style="color:#1a56a8; font-weight:700; letter-spacing:2px; text-transform:uppercase; margin-bottom:8px;">Support Us</p>
@@ -573,7 +660,6 @@
 
   <div style="max-width:600px; margin:0 auto; background:#f4f8fd; border:2px solid #c8dff5; border-radius:24px; padding:40px;">
     
-    <!-- 1. Progress Stats -->
     <div style="display:flex; justify-content:space-between; align-items:flex-end; margin-bottom:12px;">
       <div>
         <span style="display:block; font-size:0.8rem; color:#1a56a8; text-transform:uppercase; font-weight:700; text-align:left;">Raised</span>
@@ -585,7 +671,6 @@
       </div>
     </div>
 
-    <!-- 2. Visual Progress Bar -->
     <div style="width:100%; height:16px; background:#c8dff5; border-radius:100px; overflow:hidden; margin-bottom:16px;">
       <div id="donatebar" style="height:100%; width:0%; background:linear-gradient(90deg, #1a56a8, #4a90d9); border-radius:100px; transition: width 1.5s ease-out;"></div>
     </div>
@@ -594,7 +679,6 @@
       9 dollar funded — $91 to go!
     </p>
 
-    <!-- 3. Urgency/Call to Action -->
     <div style="background:#fff4cd; border:1px solid #f5c842; border-radius:12px; padding:12px; font-size:0.9rem; font-weight:600; color:#7a5c00; margin-bottom:24px;">
       🙏 Every dollar counts and we would really appreciate anything! 🙏
     </div>
@@ -603,7 +687,6 @@
       Donate Now (Paypal me)
     </a>
 
-    <!-- 4. Footer Note -->
     <p style="font-size:0.75rem; color:#6b8cb3; letter-spacing:1px; text-transform:uppercase; margin-top:24px; font-weight:600;">
       Be one of our best supporters
     </p>
@@ -611,11 +694,67 @@
   </div>
 </section>
 
+<!-- GAME LIBRARY -->
+<section class="library-section" id="library">
+  <p class="section-tag">Explore More</p>
+  <h2 class="section-title">Game Library</h2>
+
+  <div class="library-grid">
+    <a href="https://prettytasty.github.io/LunchBoxSaver/" target="_blank" class="lib-btn">
+      <span class="lib-icon">🍱</span>
+      <span class="lib-name">LunchBoxGame</span>
+    </a>
+    <a href="https://prettytasty.github.io/readingmindcoolcool/" target="_blank" class="lib-btn">
+      <span class="lib-icon">🧠</span>
+      <span class="lib-name">Reading Mind</span>
+    </a>
+    <a href="https://prettytasty.github.io/Rateater/" target="_blank" class="lib-btn">
+      <span class="lib-icon">🐀</span>
+      <span class="lib-name">Rat Eater</span>
+    </a>
+    <a href="https://prettytasty.github.io/Rathub/" target="_blank" class="lib-btn">
+      <span class="lib-icon">📷</span>
+      <span class="lib-name">Rat Hub</span>
+    </a>
+    <a href="https://prettytasty.github.io/Ball/" target="_blank" class="lib-btn">
+      <span class="lib-icon">⚽</span>
+      <span class="lib-name">Ball</span>
+    </a>
+    <a href="https://prettytasty.github.io/RS/" target="_blank" class="lib-btn">
+      <span class="lib-icon">🔫</span>
+      <span class="lib-name">Russian roulette</span>
+    </a>
+    <a href="https://prettytasty.github.io/FLIP/" target="_blank" class="lib-btn">
+      <span class="lib-icon">🪙</span>
+      <span class="lib-name">FLIP</span>
+    </a>
+    <a href="https://prettytasty.github.io/MINE/" target="_blank" class="lib-btn">
+      <span class="lib-icon">💣</span>
+      <span class="lib-name">MINE</span>
+    </a>
+    <a href="https://prettytasty.github.io/PLINKO/" target="_blank" class="lib-btn">
+      <span class="lib-icon">🎰</span>
+      <span class="lib-name">PLINKO</span>
+    </a>
+    <a href="https://prettytasty.github.io/Tetris-web/" target="_blank" class="lib-btn">
+      <span class="lib-icon">🟦</span>
+      <span class="lib-name">Tetris Web</span>
+    </a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  © 2025 <span>Bad Games Studio</span> — All rights reserved.
+</footer>
+
 <script>
   window.addEventListener('load', () => {
-    // Small delay to ensure the animation is visible
     setTimeout(() => {
       document.getElementById('donatebar').style.width = '7%';
     }, 300);
   });
 </script>
+
+</body>
+</html>
